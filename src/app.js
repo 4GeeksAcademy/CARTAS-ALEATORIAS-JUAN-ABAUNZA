@@ -1,17 +1,27 @@
-window.onload = function() {
+window.onload = function generarCarta() {
   const values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
-  const suitSymbols = [ "♠", "♣", "♥", "♦" ];
-  
-  
+  const suitSymbols = [ 
+    { symbol: "♠", class: "spade" },
+    { symbol: "♣", class: "club" },
+    { symbol: "♥", class: "heart" },
+    { symbol: "♦", class: "diamond" }
+  ];
+
   const randomValue = values[Math.floor(Math.random() * values.length)];
-  const randomSuitIndex = suitSymbols [Math.floor(Math.random() * suitSymbols.length)];
-  
+  const randomSuit = suitSymbols[Math.floor(Math.random() * suitSymbols.length)];
 
   
-  document.getElementById("top-left").innerText = randomSuitIndex;
-  document.getElementById("center").innerText = randomValue;
-  document.getElementById("bottom-right").innerText = randomSuitIndex;
+  const topLeft = document.getElementById("top-left");
+  const bottomRight = document.getElementById("bottom-right");
+  const center = document.getElementById("center");
+
+  topLeft.innerText = randomSuit.symbol;
+  topLeft.className = `top-left ${randomSuit.class}`;
+
+  center.innerText = randomValue;
+
+  bottomRight.innerText = randomSuit.symbol;
+  bottomRight.className = `bottom-right ${randomSuit.class}`;
+  setInterval(generarCarta, 10000);
   
-  
-  //document.getElementById("card").classList.add(randomSuit);
 };
