@@ -14,6 +14,7 @@ window.onload = function generarCarta() {
   const topLeft = document.getElementById("top-left");
   const bottomRight = document.getElementById("bottom-right");
   const center = document.getElementById("center");
+  const button = document.getElementById("new-card-btn")
 
   topLeft.innerText = randomSuit.symbol;
   topLeft.className = `top-left ${randomSuit.class}`;
@@ -23,5 +24,5 @@ window.onload = function generarCarta() {
   bottomRight.innerText = randomSuit.symbol;
   bottomRight.className = `bottom-right ${randomSuit.class}`;
   setInterval(generarCarta, 10000);
-  
+  button.addEventListener("click",generarCarta)
 };
